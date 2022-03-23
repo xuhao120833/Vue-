@@ -5,21 +5,48 @@
     <title>初始化Vue</title>
     <script type="text/javascript" src="../vue.js"></script>
 </head>
+<style>
+    body{
+        background: radial-gradient(200% 100% at bottom center,#f7f7b6,#e96f92,#1b2947);
+        background: radial-gradient(220% 105% at top center,#1b2947 10%,#75517d 40%,#e96f92 65%);
+        background-attachment: fixed;
+        overflow: auto;
+
+    }
+</style>
 <body>
     <div id="root">
        <h1>Hello,Vue{{name}}</h1>
+       <a v-bind:href='url'>指令语法</a><br/>
+       <input type="text" v-model:value="name"><br/> <!-- //v-bind表示双向绑定 -->
+       <button v-on:click="showinfo">点击我</button>
     </div>
 
     
     <script type="text/javascript">
 
     Vue.config.productionTip=false//阻止Vue在启动时生产生产指示。
-    new Vue({
+    const vm=new Vue({//创建Vue实例对象
         el:'#root',
         data:{
-            name:'加油'
+            name:'加油',
+            url:'https://www.xusuqiaohao.xyz',
+        },
+        // data:Function(){
+        //     return{
+        //         name:'加油'
+        //     }
+        // }
+        methods:{
+            showinfo(){
+                alert("我来自地狱!")
+            }
+
         }
-    }) //创建Vue实例对象
+    }) 
+    
+    // v.$mount('#root')绑定root的第二种写法
+    //console.log(vm)
 
     </script>
 </body>
